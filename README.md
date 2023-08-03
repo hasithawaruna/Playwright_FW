@@ -28,15 +28,15 @@ The goal is to showcase various user interactions on the "https://www.lambdatest
 
 ## Clone Private Project
 
-Run the below command to clone the project
+Run the below command to open the shared Gitpod workspace
 
 ```bash
-git clone https://github.com/hasithawaruna/Playwright_Exercise
+https://hasithawaru-playwrighte-efuv5kdg15q.ws-us102.gitpod.io
 ``` 
 
 ## Install Dependencies
 
-Follow the root directory of the cloned project and execute the below command to install node modules 
+Follow the root directory of the project and execute the below command to install node modules 
  
 ```bash
 npm i
@@ -171,7 +171,7 @@ Tests can be executed either via the command line or from the Playwright test ru
 ## Reporting
 
 
-Once the execution is done you can open the playwright report by running the command
+Once the execution is done the playwright report will automaticcally open with your browser.
 ```
   npx playwright show-report
 ```

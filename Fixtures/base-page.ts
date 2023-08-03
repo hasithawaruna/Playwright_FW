@@ -20,7 +20,7 @@ const capabilities = {
     browserVersion: "latest",
     "LT:Options": {
         platform: "Windows 10",
-        build: "Execution 1",
+        build: "Execution 2",
         name: "Playwright Test",
         user: 'hasithawaruna',
         accessKey: 'cQ8fwP8EJZ7fQBp2P3P2HelSQ7bkP6Ce9AQInTl08rmpNwy3h2',
