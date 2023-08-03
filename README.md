@@ -4,9 +4,7 @@ The goal is to showcase various user interactions on the "https://www.lambdatest
 
 ## Table of contents
 - [Prerequisits]
-- [Clone Private Project]
-- [Install Dependencies]
-- [Run Test]
+- [Run the Project with Gitpod]
 - [Page Object Model(POM)]
 - [Folder Structure]
 - [Dotenv Module (.env)] 
@@ -26,26 +24,22 @@ The goal is to showcase various user interactions on the "https://www.lambdatest
 
 ```
 
-## Clone Private Project
+## Run the Project with Gitpod
 
-Run the below command to open the shared Gitpod workspace
+Log in to your Gitpod account
+
+```bash
+https://gitpod.io/login/
+```
+
+Open the below URL with the browser
 
 ```bash
 https://hasithawaru-playwrighte-n04p0blokrd.ws-us102.gitpod.io/
-``` 
-
-## Install Dependencies
-
-Follow the root directory of the project and execute the below command to install node modules 
- 
-```bash
-npm i
 ```
 
-## Run Test
-
-Use the below command to run the Playwrite test
-
+Once the VScode is opened with your browser, Run the below command with the terminal 
+ 
 ```bash
 npm test
 ```
