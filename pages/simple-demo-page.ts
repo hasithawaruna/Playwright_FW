@@ -31,6 +31,7 @@ export default class simpleDemoPage {
   }
 
   async checkSubmit() {
+    this.page.waitForTimeout(1000)
     await this.submit.click()
   }
 }
