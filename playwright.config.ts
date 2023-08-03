@@ -66,7 +66,7 @@ export default defineConfig({
   projects: [
  
     {
-      name: "safari:latest:MacOS Catalina@lambdatest",
+      name: "pw-webkit:latest:MacOS Catalina@lambdatest",
       use: {
           viewport: { width: 1280, height: 720 },
       },
