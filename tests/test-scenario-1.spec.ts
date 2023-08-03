@@ -17,6 +17,7 @@ test('verify user can submit values', async ({ playgroundPage, simpleDemoPage, p
     await expect(page).toHaveURL(/simple-form-demo/)
     await expect(simpleDemoPage.subPageTitle).toContainText(simpleDemoPage.expectedTitleText)
     await simpleDemoPage.enterValue()
+    await page.waitForTimeout(1000)
     await simpleDemoPage.checkSubmit()
     await expect(simpleDemoPage.message).toContainText(simpleDemoPage.expectedElementText)
 })

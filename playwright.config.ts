@@ -66,9 +66,9 @@ export default defineConfig({
   projects: [
  
     {
-      name: "chrome:latest:MacOS Catalina@lambdatest",
+      name: "safari:latest:MacOS Catalina@lambdatest",
       use: {
-          viewport: { width: 1920, height: 1080 },
+          viewport: { width: 1280, height: 720 },
       },
   },
   {
