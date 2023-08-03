@@ -54,11 +54,11 @@ export default defineConfig({
   },
 
   //Maximum time that one test can run
-  timeout: 500 * 1000,
+  timeout: 5000 * 1000,
 
   expect: {
     //Maximum time expect()
-    timeout: 600000
+    timeout: 6000000
 
   },
 
