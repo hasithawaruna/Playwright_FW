@@ -31,7 +31,7 @@ The goal is to showcase various user interactions on the "https://www.lambdatest
 Run the below command to open the shared Gitpod workspace
 
 ```bash
-https://hasithawaru-playwrighte-efuv5kdg15q.ws-us102.gitpod.io
+https://hasithawaru-playwrighte-n04p0blokrd.ws-us102.gitpod.io/
 ``` 
 
 ## Install Dependencies
