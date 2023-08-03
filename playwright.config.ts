@@ -25,7 +25,7 @@ export default defineConfig({
   // retries: process.env.CI ? 2 : 0,
 
   /* Retry 2 times */
-  retries: 1,
+  retries: 0,
 
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
@@ -54,7 +54,7 @@ export default defineConfig({
   },
 
   //Maximum time that one test can run
-  timeout: 5000 * 1000,
+  timeout: 6000 * 1000,
 
   expect: {
     //Maximum time expect()
