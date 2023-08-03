@@ -66,13 +66,13 @@ export default defineConfig({
   projects: [
  
     {
-      name: "pw-webkit:latest:MacOS Catalina@lambdatest",
+      name: "chrome:latest:MacOS Catalina@lambdatest",
       use: {
           viewport: { width: 1280, height: 720 },
       },
   },
   {
-      name: "chrome:latest:Windows 10@lambdatest",
+      name: "MicrosoftEdge:latest:Windows 10@lambdatest",
       use: {
           viewport: { width: 1280, height: 720 },
       },
