@@ -4,7 +4,10 @@ import { expect, test } from '../Fixtures/base-page'
 test.beforeEach(async ({ playgroundPage }) => {
     await playgroundPage.goToBasePage()
 })
-
+// Below code will run after each test
+test.afterEach(async ({page}) => {
+    await page.close()
+});
 
 test('verify user can submit values', async ({ playgroundPage, simpleDemoPage, page}) => {
 
