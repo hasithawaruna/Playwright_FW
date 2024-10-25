@@ -32,6 +32,7 @@ test('verify use can see a validation message if proceed without filling the fie
     expect(inpotBoxPageObj.address2Required).toBeTruthy()
     expect(inpotBoxPageObj.stateRequired).toBeTruthy()
     expect(inpotBoxPageObj.zipRequired).toBeTruthy()
+    await captureScreenshot(page, 'verify use can see a validation message if proceed without filling the fields', false)
 })
 
 test('verify use can submit forum by filling all the fields', async () => {
