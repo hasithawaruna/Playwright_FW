@@ -1,17 +1,18 @@
-import { defineConfig, devices } from '@playwright/test';
+import { chromium, defineConfig, devices } from '@playwright/test';
 import { testPlanFilter } from "allure-playwright/dist/testplan";
-
+import dotenv from 'dotenv'
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+dotenv.config({
+  path: '.env.test'
+})
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-
 
 
 export default defineConfig({
@@ -30,17 +31,21 @@ export default defineConfig({
   retries: 0,
 
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.WORKER ? parseInt(process.env.WORKER) : 1,
+
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  // reporter: [
-  //   [
-  //     'html', {
-  //       open: 'always'
-  //     }
-  //   ],
-  //   ["line"], 
-  //   ["allure-playwright"]
-  // ],
+  reporter: [
+    [
+      'html', {
+        open: 'always'
+      }
+    ],
+    ["line"],
+    ["allure-playwright"]
+  ],
+
+  grep: testPlanFilter(),
+
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -50,8 +55,10 @@ export default defineConfig({
     // trace: 'on-first-retry',
     trace: 'off',
     screenshot: 'only-on-failure',
-    video: 'on',
-    headless: true //execution mode
+    video: 'off',
+    headless: false, //execution mode
+    browserName: 'chromium'
+
     // launchOptions: {
     //   slowMo: 1000 //slowdown execution
     // }
@@ -68,32 +75,42 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
- 
-    {
-      name: "chrome:latest:MacOS Catalina@lambdatest",
-      use: {
-          viewport: { width: 1280, height: 720 },
-      },
-  },
-  {
-      name: "MicrosoftEdge:latest:Windows 10@lambdatest",
-      use: {
-          viewport: { width: 1280, height: 720 },
-      },
-  },
-  // {
-  //   name: 'chromium',
-  //   use: { ...devices['Desktop Chrome'] },
-  // },
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
+    //   {
+    //     name: "chrome:latest:MacOS Catalina@lambdatest",
+    //     use: {
+    //         viewport: { width: 1280, height: 720 },
+    //     },
     // },
+    // {
+    //     name: "MicrosoftEdge:latest:Windows 10@lambdatest",
+    //     use: {
+    //         viewport: { width: 1280, height: 720 },
+    //     },
+    // },
+    {
+      name: 'chromium',
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1280, height: 720 }
+      },
+
+    },
+    {
+      name: 'firefox',
+      use: {
+        ...devices['Desktop Firefox'],
+        viewport: { width: 1280, height: 720 }
+      },
+    },
+
+    {
+      name: 'webkit',
+      use: {
+        ...devices['Desktop Safari'],
+        viewport: { width: 1280, height: 720 }
+      },
+    },
 
     /* Test against mobile viewports. */
     // {
@@ -122,8 +139,5 @@ export default defineConfig({
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
-
-  grep: testPlanFilter(),
-  reporter: [["line"], ["allure-playwright"]],
 
 });
