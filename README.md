@@ -76,14 +76,24 @@ The Page Object Model (POM) in Playwright is a design pattern used to organize w
  
     ├── ...
     │
-    ├── pages/                                     # Generic functionality for tests  
+    ├── pages/                                    # Generic functionality for tests  
     │
     ├── tests/                                    # Test cases     
     │  
     ├── Utils/                                    # Utility files
     | 
+    ├── screenshots/                              # Screenshots
+    │ 
+    ├── Fixtures/                                 #  setting up and tearing down the test environments, providing shared context and resources across multiple tests
+    │         integration.ts                      #  Device farm properties                    
+    │
     ├── playwright-report/   
-    │         ├──index.html                       #  Test report of the tests executed 
+    │         ├──index.html                       #  Default Test report of the tests executed 
+    │
+    ├── allure-report/   
+    │         ├──index.html                       #  Allure Test report of the tests executed 
+    │
+    ├── allure-results                            #  Data files used to build Allure HTML report
     │
     │── .env.test                                 # Confiugurations used in the test environment
     │
@@ -186,10 +196,21 @@ Tests can be executed either via the command line or from the Playwright test ru
 
 ## Reporting
 
-
+#### Default Report
 Once the execution is done the playwright report will automaticcally open with your browser.
 ```
   npx playwright show-report
+```
+#### Allure Report (https://www.npmjs.com/package/allure-playwright?activeTab=readme)
+
+Once the execution is done the Run below command to generate allure HTML report (Use -- Clean for remove previous reports files).
+```
+  allure generate ./allure-results -o ./allure-report --clean
+```
+
+Open generated allure HTML report.
+```
+  allure open ./allure-report
 ```
 
 #### To View HTML Report
@@ -199,3 +220,11 @@ Once the execution is done the playwright report will automaticcally open with y
 │         ├──index.html - Right Click and Navigate to the directory to open the .HTML file via the browser    
 ```
 
+## Fixes
+
+#### Error : '/ps1 cannot be loaded because running scripts is disabled on this system'
+
+Run below command to resolve undefined ExecutionPolicy.
+```
+  Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser
+```

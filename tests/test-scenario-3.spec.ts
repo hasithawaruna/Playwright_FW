@@ -2,6 +2,8 @@ import { test, expect, Page } from '@playwright/test'
 import { captureScreenshot } from '../Utils/Utils'; // Import the function
 import { playgroundPage } from '../pages/lamdatest-playground-page'
 import { inpotBoxPage } from '../pages/input-box-page';
+import { allure } from "allure-playwright";
+import { Severity } from "allure-js-commons";
 
 let page: Page
 
@@ -12,7 +14,14 @@ test.beforeEach(async ({ browser }) => {
     await playgroundPageObj.goToBasePage()
 })
 
-test('verify use can see a validation message if proceed without filling the fields', async () => {
+test('TC003 - verify use can see a validation message if proceed without filling the fields', async () => {
+    await allure.description("TC003 - verify use can see a validation message if proceed without filling the fields");
+    await allure.owner("Hasitha Waruna");
+    await allure.tags("Functional", "UI");
+    await allure.severity(Severity.NORMAL);
+    await allure.feature("Home Page");
+    await allure.suite("Smoke Test Suite");
+
     const playgroundPageObj = new playgroundPage(page)
     const inpotBoxPageObj = new inpotBoxPage(page)
 
@@ -35,7 +44,14 @@ test('verify use can see a validation message if proceed without filling the fie
     await captureScreenshot(page, 'verify use can see a validation message if proceed without filling the fields', false)
 })
 
-test('verify use can submit forum by filling all the fields', async () => {
+test('TC004 - verify use can submit forum by filling all the fields', async () => {
+    await allure.description("TC004 - verify use can submit forum by filling all the fields");
+    await allure.owner("Hasitha Waruna");
+    await allure.tags("Functional", "UI");
+    await allure.severity(Severity.NORMAL);
+    await allure.feature("Home Page");
+    await allure.suite("Smoke Test Suite");
+
     const playgroundPageObj = new playgroundPage(page)
     const inpotBoxPageObj = new inpotBoxPage(page)
 

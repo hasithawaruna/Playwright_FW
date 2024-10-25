@@ -2,6 +2,8 @@ import { test, expect, Page } from '@playwright/test'
 import { playgroundPage } from '../pages/lamdatest-playground-page'
 import { simpleDemoPage } from '../pages/simple-demo-page'
 import { captureScreenshot } from '../Utils/Utils'; // Import the function
+import { allure } from "allure-playwright";
+import { Severity } from "allure-js-commons";
 
 
 
@@ -22,7 +24,13 @@ test.afterEach(async ({ browser }) => {
     await page.close()
 });
 
-test('verify user can submit values', async () => {
+test('TC001 - verify user can submit values', async () => {
+    await allure.description("TC001 - verify user can submit values");
+    await allure.owner("Hasitha Waruna");
+    await allure.tags("Functional", "UI");
+    await allure.severity(Severity.NORMAL);
+    await allure.feature("Home Page");
+    await allure.suite("Smoke Test Suite");
     const playgroundPageObj = new playgroundPage(page)
     const simpleDemoPageObj = new simpleDemoPage(page)
     await expect(playgroundPageObj.basePageTitle).toContainText(playgroundPageObj.expectedBasePageTitile)

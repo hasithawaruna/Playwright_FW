@@ -1,7 +1,7 @@
-import playgroundPage from '../pages/lamdatest-playground-page'
-import simpleDemoPage from '../pages/simple-demo-page'
-import progressBarPage from '../pages/progress-bar-page'
-import inpotBoxPage from '../pages/input-box-page'
+import {playgroundPage} from '../pages/lamdatest-playground-page'
+import {simpleDemoPage} from '../pages/simple-demo-page'
+import {progressPage} from '../pages/progress-bar-page'
+import {inpotBoxPage} from '../pages/input-box-page'
 import { chromium, test as baseTest } from "@playwright/test";
 
 
@@ -10,7 +10,7 @@ import path from "path"
 type pages = {
     playgroundPage: playgroundPage
     simpleDemoPage: simpleDemoPage
-    progressBarPage: progressBarPage
+    progressBarPage: progressPage
     inpotBoxPage: inpotBoxPage
 }
 
@@ -96,7 +96,7 @@ const testPages = baseTest.extend<pages>({
         await use(new simpleDemoPage(page));
     },
     progressBarPage: async ({ page }, use) => {
-        await use(new progressBarPage(page));
+        await use(new progressPage(page));
     },
     inpotBoxPage: async ({ page }, use) => {
         await use(new inpotBoxPage(page));
