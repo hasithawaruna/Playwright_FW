@@ -5,7 +5,7 @@ dotenv.config({
   path: '.env.test'
 })
 
-export default class progressPage {
+export class progressPage {
 
   //Locators
   page: Page
@@ -24,17 +24,24 @@ export default class progressPage {
   }
 
   async setValue() {
-        // Get the position
-        const position = await this.progressbar.boundingBox();
+    // Get the position
+    let position: any;
 
-        // Get target position for value 95
-        const targetPositionX = position.x + position.width * 0.93;
-    
-        const mouse = this.page.mouse;
-        await mouse.move(position.x, position.y);
-        await mouse.down();
-        await mouse.move(targetPositionX, position.y);
-        await mouse.up();
+    // Check if `boundingBox()` returns null
+    const boundingBox = await this.progressbar.boundingBox();
+
+    if (boundingBox == null) {
+      position = 0;
+    }
+
+    // Get target position for value 95
+    const targetPositionX = position.x + position.width * 0.93;
+
+    const mouse = this.page.mouse;
+    await mouse.move(position.x, position.y);
+    await mouse.down();
+    await mouse.move(targetPositionX, position.y);
+    await mouse.up();
   }
 
 }

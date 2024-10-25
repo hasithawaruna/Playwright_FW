@@ -5,7 +5,8 @@ dotenv.config({
   path: '.env.test'
 })
 
-export default class playgroundPage {
+
+export class playgroundPage {
 
   //Locators
   page: Page

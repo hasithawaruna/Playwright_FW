@@ -1,25 +1,39 @@
-import { expect, test } from '../Fixtures/base-page'
+import { test, expect, Page } from '@playwright/test'
+import { playgroundPage } from '../pages/lamdatest-playground-page'
+import { simpleDemoPage } from '../pages/simple-demo-page'
+import { captureScreenshot } from '../Utils/Utils'; // Import the function
+
+
+
+let page: Page
+
 
 // Below code will run before each test
-test.beforeEach(async ({ playgroundPage }) => {
-    await playgroundPage.goToBasePage()
+test.beforeEach(async ({ browser }) => {
+    page = await browser.newPage()
+
+    const playgroundPageObj = new playgroundPage(page)
+    await playgroundPageObj.goToBasePage()
 })
+
 // Below code will run after each test
-test.afterEach(async ({page}) => {
+test.afterEach(async ({ browser }) => {
+    page = await browser.newPage()
     await page.close()
 });
 
-test('verify user can submit values', async ({ playgroundPage, simpleDemoPage, page}) => {
-
-    
-    await expect(playgroundPage.basePageTitle).toContainText(playgroundPage.expectedBasePageTitile)
-    await playgroundPage.goToSimpleFormDemoPage()
+test('verify user can submit values', async () => {
+    const playgroundPageObj = new playgroundPage(page)
+    const simpleDemoPageObj = new simpleDemoPage(page)
+    await expect(playgroundPageObj.basePageTitle).toContainText(playgroundPageObj.expectedBasePageTitile)
+    await playgroundPageObj.goToSimpleFormDemoPage()
     await expect(page).toHaveURL(/simple-form-demo/)
-    await expect(simpleDemoPage.subPageTitle).toContainText(simpleDemoPage.expectedTitleText)
-    await simpleDemoPage.enterValue()
+    await expect(simpleDemoPageObj.subPageTitle).toContainText(simpleDemoPageObj.expectedTitleText)
+    await simpleDemoPageObj.enterValue()
     await page.waitForTimeout(1000)
-    await simpleDemoPage.checkSubmit()
-    await expect(simpleDemoPage.message).toContainText(simpleDemoPage.expectedElementText)
+    await simpleDemoPageObj.checkSubmit()
+    await expect(simpleDemoPageObj.message).toContainText(simpleDemoPageObj.expectedElementText)
+    await captureScreenshot(page, 'verify user can submit values', false)
 })
 
 

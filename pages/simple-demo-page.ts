@@ -5,7 +5,7 @@ dotenv.config({
   path: '.env.test'
 })
 
-export default class simpleDemoPage {
+export class simpleDemoPage {
 
   //Locators
   page: Page

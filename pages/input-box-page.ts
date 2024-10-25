@@ -5,7 +5,7 @@ dotenv.config({
   path: '.env.test'
 })
 
-export default class inpotBoxPage {
+export class inpotBoxPage {
 
   //Locators
   page: Page

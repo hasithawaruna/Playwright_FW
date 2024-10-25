@@ -24,6 +24,26 @@ The goal is to showcase various user interactions on the "https://www.lambdatest
 
 ```
 
+## Run the Project Locally
+
+Clone the project
+
+```bash
+https://github.com/hasithawaruna/Playwright_FW.git
+```
+
+Open Terminal on your IDE and Run below command to install all dependancies
+
+```bash
+npm install
+```
+
+Run the below command to start test with default scope 
+ 
+```bash
+npm test
+```
+
 ## Run the Project with Gitpod
 
 Log in to your Gitpod account
@@ -59,7 +79,9 @@ The Page Object Model (POM) in Playwright is a design pattern used to organize w
     ├── pages/                                     # Generic functionality for tests  
     │
     ├── tests/                                    # Test cases     
-    │   
+    │  
+    ├── Utils/                                    # Utility files
+    | 
     ├── playwright-report/   
     │         ├──index.html                       #  Test report of the tests executed 
     │
